@@ -3244,6 +3244,11 @@ button.navbar-toggler {
   letter-spacing: -0.02em;
 }
 
+.title-with-margin {
+  margin-bottom: 32px;
+  margin-top: 24px;
+}
+
 @media (max-width: 576px) {
   .mobile-hidden {
     display: none;
@@ -3390,8 +3395,4 @@ button.navbar-toggler {
   .info-box {
     display: block;
   }
-}
-
-.title-with-margin {
-  margin-bottom: 32px;
 }
