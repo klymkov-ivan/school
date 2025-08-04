@@ -3229,6 +3229,21 @@ button.navbar-toggler {
   top: -100px;
 }
 
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.info-box p {
+  font-weight: 500;
+  font-size: 18px;
+
+  /* line-height: 20px; */
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
 @media (max-width: 576px) {
   .mobile-hidden {
     display: none;
@@ -3371,6 +3386,9 @@ button.navbar-toggler {
   }
   .nav-link {
     padding: 0.3rem 1rem;
+  }
+  .info-box {
+    display: block;
   }
 }
 
