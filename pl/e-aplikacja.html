@@ -279,32 +279,35 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <h1 class="mb-3">Elektroniczna aplikacja</h1>
+            <h1 class="mb-3">Elektroniczna rekrutacja</h1>
 
             <h4>
-              Podanie o przyjęcie na studia - Wyższa Szkoła Nauk Społecznych i
-              Bezpieczeństwa
+              Formularz rekrutacyjny na studia - Wyższa Szkoła Nauk Społecznych
+              i Bezpieczeństwa
             </h4>
 
             <form action="https://wsnsb.pl/pl/e-aplikacja?send=1" method="post">
               <input type="hidden" name="send" value="1" />
 
-              <p class="evidencni_cislo_p mt-4">
-                <!--
+              <!-- <p class="evidencni_cislo_p mt-4"> -->
+              <!--
 					Datum: &nbsp;<input type="text" name="datum" id="datum" class="form-control" value="30.05.2025">
 					-->
-                Numer licencji: &nbsp;<input
+              <!-- Numer licencji: &nbsp;<input
                   type="text"
                   name="evidencni_cislo"
                   id="evidencni_cislo"
                   class="form-control"
                   readonly=""
                 />
-              </p>
+              </p> -->
 
               <div class="table-responsive-sm">
                 <table class="table table-hover mt-4">
                   <tbody>
+                    <tr>
+                      <th colspan="4">Dane osobowe</th>
+                    </tr>
                     <tr>
                       <td colspan="2"><b>Rok akademicki:</b></td>
                       <td colspan="2" class="text-right">
@@ -324,7 +327,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="2"><b>Nazwisko:</b></td>
+                      <td colspan="2"><b>Imię (imiona):</b></td>
                       <td colspan="2" class="text-right">
                         <input
                           type="text"
@@ -335,7 +338,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="2"><b>Nazwisko rodowe:</b></td>
+                      <td colspan="2"><b>Nazwisko:</b></td>
                       <td colspan="2" class="text-right">
                         <input
                           type="text"
@@ -345,18 +348,63 @@
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="2"><b>Nazwa:</b></td>
+                      <td colspan="2"><b>Dokument tożsamości:</b></td>
                       <td colspan="2" class="text-right">
-                        <input
-                          type="text"
-                          name="jmeno"
+                        <!-- Вибір типу документа -->
+                        <select
+                          id="document-type"
+                          name="document-type"
                           class="form-control"
-                          required=""
-                        />
+                          required
+                        >
+                          <option value="">Wybierz dokument</option>
+                          <option value="dowod">Dowód osobisty</option>
+                          <option value="paszport">Paszport</option>
+                        </select>
+
+                        <!-- Dowód osobisty -->
+                        <div
+                          id="dowod-fields"
+                          style="display: none; margin-top: 10px"
+                        >
+                          <input
+                            type="text"
+                            name="dowod-serial"
+                            placeholder="Seria i numer dowodu"
+                            class="form-control mt-2"
+                          />
+                        </div>
+
+                        <!-- Paszport -->
+                        <div
+                          id="paszport-fields"
+                          style="display: none; margin-top: 10px"
+                        >
+                          <input
+                            type="text"
+                            name="paszport-serial"
+                            placeholder="Seria i numer paszportu"
+                            class="form-control mt-2"
+                          />
+                        </div>
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="2"><b>Narodowość:</b></td>
+                      <td colspan="2"><b>Karta Polaka:</b></td>
+                      <td colspan="2" class="text-right">
+                        <select
+                          name="karta-polaka"
+                          class="form-control"
+                          required
+                        >
+                          <option value="">-- Wybierz --</option>
+                          <option value="tak">Tak</option>
+                          <option value="nie">Nie</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><b>Obywatelstwo:</b></td>
                       <td colspan="2" class="text-right">
                         <input
                           type="text"
@@ -378,24 +426,12 @@
                       </td>
                     </tr>
                     <tr>
-                      <td><b>Numer urodzenia:</b></td>
-                      <td>
+                      <td colspan="2"><b>Data urodzenia:</b></td>
+                      <td colspan="2" class="text-right">
                         <input
                           type="text"
-                          name="rc"
-                          id="rc"
+                          name="data_narozeni"
                           class="form-control"
-                          required=""
-                        />
-                      </td>
-                      <td class="text-right"><b>Data urodzenia:</b></td>
-                      <td>
-                        <input
-                          type="text"
-                          name="datum_narozeni"
-                          id="datum_narozeni"
-                          class="form-control"
-                          required=""
                         />
                       </td>
                     </tr>
@@ -458,10 +494,10 @@
                 <table class="table table-hover mt-5">
                   <tbody>
                     <tr>
-                      <th colspan="4">Adres stałego zamieszkania</th>
+                      <th colspan="4">Adres zamieszkania</th>
                     </tr>
                     <tr>
-                      <td>Ulica i numer:</td>
+                      <td>Ulica, numer domu, mieszkania:</td>
                       <td>
                         <input
                           type="text"
@@ -472,7 +508,7 @@
                       <td colspan="2"></td>
                     </tr>
                     <tr>
-                      <td>Miasto (gmina):</td>
+                      <td>Miejscowość:</td>
                       <td>
                         <input
                           type="text"
@@ -490,7 +526,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>Okres:</td>
+                      <td>Gmina:</td>
                       <td>
                         <input
                           type="text"
@@ -498,11 +534,21 @@
                           class="form-control"
                         />
                       </td>
-                      <td class="text-right">Stan:</td>
+                      <td class="text-right">Powiat:</td>
                       <td>
                         <input
                           type="text"
                           name="bydliste_stat"
+                          class="form-control"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Województwo:</td>
+                      <td>
+                        <input
+                          type="text"
+                          name="województwo"
                           class="form-control"
                         />
                       </td>
@@ -516,12 +562,12 @@
                   <tbody>
                     <tr>
                       <th colspan="4">
-                        Adres do korespondencji
+                        Adres korespondencyjny
                         <span>(jeśli jest inny niż stały adres)</span>
                       </th>
                     </tr>
                     <tr>
-                      <td>Ulica i numer:</td>
+                      <td>Ulica, numer domu, mieszkania:</td>
                       <td>
                         <input
                           type="text"
@@ -532,7 +578,7 @@
                       <td colspan="2"></td>
                     </tr>
                     <tr>
-                      <td>Miasto (gmina):</td>
+                      <td>Miejscowość:</td>
                       <td>
                         <input
                           type="text"
@@ -550,7 +596,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>Okres:</td>
+                      <td>Gmina:</td>
                       <td>
                         <input
                           type="text"
@@ -563,6 +609,16 @@
                         <input
                           type="text"
                           name="korespondencni_stat"
+                          class="form-control"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Województwo:</td>
+                      <td>
+                        <input
+                          type="text"
+                          name="województwo"
                           class="form-control"
                         />
                       </td>
@@ -930,6 +986,13 @@
                   value="Wysyłanie i generowanie PDF"
                 />
               </p>
+              <button
+                type="button"
+                id="generate-pdf"
+                class="default-btn big-button"
+              >
+                Generuj PDF
+              </button>
             </form>
           </div>
         </div>
@@ -1018,5 +1081,40 @@
     <script src="../js/wow.min.js"></script>
 
     <script src="../js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      document.getElementById("generate-pdf").addEventListener("click", () => {
+        // Вибір елемента форми
+        const element = document.querySelector(".prihlaska");
+
+        // Встановлення опцій
+        const opt = {
+          margin: 0.3,
+          filename: "formularz-rekrutacyjny.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+        };
+
+        // Генерація PDF
+        html2pdf().set(opt).from(element).save();
+      });
+    </script>
+    <script>
+      const docSelect = document.getElementById("document-type");
+      const dowodFields = document.getElementById("dowod-fields");
+      const paszportFields = document.getElementById("paszport-fields");
+
+      docSelect.addEventListener("change", function () {
+        dowodFields.style.display = "none";
+        paszportFields.style.display = "none";
+
+        if (this.value === "dowod") {
+          dowodFields.style.display = "block";
+        } else if (this.value === "paszport") {
+          paszportFields.style.display = "block";
+        }
+      });
+    </script>
   </body>
 </html>
